@@ -1,0 +1,1179 @@
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+  :root {
+    --primary-color: #081ed8;
+    --primary-hover: #a0abf6;
+    --text-main: #000000;
+    --text-muted: #444444;
+    --border-color: #eaeaea;
+    --bg-card: #ffffff;
+  }
+
+  .filmography-section-title {
+    font-family: 'Karla', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 24px 4px;
+    display: inline-block;
+    padding-bottom: 6px;
+    border-bottom: 3px solid var(--primary-color);
+  }
+
+  .md-tabs-container {
+    font-family: 'Karla', sans-serif;
+    display: flex; 
+    width: max-content; 
+    align-items: center;
+    background: #f4f4f6; 
+    padding: 4px;
+    border-radius: 40px;
+    margin: 0 0 24px 4px;
+  }
+
+  .md-tab-btn {
+    font-family: 'Karla', sans-serif;
+    font-size: 14px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 10px 26px;
+    border: 1px solid transparent; 
+    border-radius: 30px;
+    background: transparent;
+    color: var(--text-main); 
+    opacity: 0.45; 
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    text-align: center;
+  }
+
+  .md-tab-btn:hover {
+    opacity: 0.7;
+  }
+
+  .md-tab-input {
+    display: none;
+  }
+
+  #md-control-animated:checked ~ .md-tabs-container #md-btn-animated,
+  #md-control-liveaction:checked ~ .md-tabs-container #md-btn-liveaction {
+    background: #ffffff;
+    color: var(--text-main); 
+    opacity: 1; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.02);
+  }
+
+  .credits-wrapper {
+    font-family: 'Karla', sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0 auto 0 auto; 
+    padding-bottom: 40px; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .md-grid {
+    display: none;
+  }
+
+  #md-control-animated:checked ~ #md-display-animated,
+  #md-control-liveaction:checked ~ #md-display-liveaction {
+    display: flex;
+  }
+
+  .credit-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .credit-item:hover {
+    border-color: #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transform: translateY(-1px);
+  }
+
+  .media-icon-container {
+    width: 48px; 
+    height: 48px; 
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+  }
+
+  .media-icon-container i {
+    font-size: 18px; 
+    color: var(--primary-color);
+  }
+
+  .info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--text-main);
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .title a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .title a:hover {
+    color: var(--primary-hover);
+  }
+
+  .title span {
+    font-weight: 400;
+    color: #000000;
+    font-size: 12px;
+    text-transform: none; 
+    letter-spacing: 0.2px;
+    background-color: #f0f0f2;
+    padding: 4px 10px;
+    border-radius: 6px;
+    display: inline-block;
+    line-height: 1;
+  }
+
+  .role {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .role a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .role a:hover {
+    color: var(--primary-hover);
+  }
+
+  @media (max-width: 600px) {
+    .filmography-section-title {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .md-tabs-container {
+      margin-bottom: 16px;
+      padding: 3px;
+    }
+    .md-tab-btn {
+      font-size: 13px !important;
+      padding: 8px 20px;
+    }
+    .credits-wrapper {
+      gap: 12px;
+    }
+    .credit-item {
+      padding: 18px 18px;
+    }
+    .media-icon-container {
+      width: 40px; 
+      height: 40px;
+      margin-right: 14px;
+    }
+    .media-icon-container i {
+      font-size: 16px;
+    }
+    .title {
+      font-size: 15px;
+      gap: 6px;
+    }
+    .title span {
+      font-size: 11px;
+      padding: 3px 8px;
+    }
+    .role {
+      font-size: 13.5px;
+    }
+  }
+</style>
+
+<h2 class="filmography-section-title">Movies</h2>
+
+<input type="radio" id="md-control-animated" name="md-film-selection" class="md-tab-input" checked />
+<input type="radio" id="md-control-liveaction" name="md-film-selection" class="md-tab-input" />
+
+<div class="md-tabs-container">
+  <label for="md-control-animated" id="md-btn-animated" class="md-tab-btn">Animated</label>
+  <label for="md-control-liveaction" id="md-btn-liveaction" class="md-tab-btn">Live-Action</label>
+</div>
+
+<div id="md-display-animated" class="credits-wrapper md-grid">
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/101-dalmatet-ii-aventurat-e-pecit-ne-londer.html">101 Dalmatians II: Patch's London Adventure</a></div>
+      <div class="role">as Patch <span>2nd dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/jeta-e-nje-milingone.html">A Bug's Life</a></div>
+      <div class="role">as Princess Atta</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">A Troll in Central Park</div>
+      <div class="role">as Rosie</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Aida of the Trees</div>
+      <div class="role">as Amneris</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">All Dogs Go to Heaven 2</div>
+      <div class="role">as Annabelle</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Alvin and the Chipmunks: The Squeakquel</div>
+      <div class="role">as Jeanette Miller</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/bashkimi-i-kafsheve.html">Animals United</a></div>
+      <div class="role">as Bonnie</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/milingona-z.html">Antz</a></div>
+      <div class="role">as Princess Bala</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/atlantis-kthimi-i-milos.html">Atlantis: Milo's Return</a></div>
+      <div class="role">as Kidagakash "Kida" Nedakh</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/atlantis-mbreteria-e-humbur.html">Atlantis: The Lost Empire</a></div>
+      <div class="role">as Kidagakash "Kida" Nedakh</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/balto.html">Balto</a></div>
+      <div class="role">as Rosy's Mother</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/balto-te-fshehtat-e-ujkut.html">Balto II: Wolf Quest</a></div>
+      <div class="role">as Aleu</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/bambi.html">Bambi</a></div>
+      <div class="role">as Young Flower <span>1st dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-dhe-sekreti-i-zanave.html">Barbie: A Fairy Secret</a></div>
+      <div class="role">as Taylor</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-nje-perralle-mode.html">Barbie: A Fashion Fairytale</a></div>
+      <div class="role">as Barbie</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-princesha-dhe-e-varfera.html">Barbie as the Princess and the Pauper</a></div>
+      <div class="role">as Princess Anneliese, Erika <span>2nd dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-ne-fairytopia.html">Barbie: Fairytopia</a></div>
+      <div class="role">as Elina</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-nje-histori-sirenash.html">Barbie in a Mermaid Tale</a></div>
+      <div class="role">as Merliah Summers</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-mariposa-dhe-mikeshat-e-saj-zana-flutura.html">Barbie: Mariposa and her Butterfly Fairy Friends</a></div>
+      <div class="role">as Henna, Zinzie <span>1st dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-e-liqenit-te-mjellmave.html">Barbie of Swan Lake</a></div>
+      <div class="role">as Barbie / Odette</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-gishteza.html">Barbie Presents: Thumbelina</a></div>
+      <div class="role">as Thumbelina</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/barbi-shkolla-e-princeshave.html">Barbie: Princess Charm School</a></div>
+      <div class="role">as Blair Willows / Princess Sofia</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Batman: Mystery of the Batwoman</div>
+      <div class="role">as Kathy Duquesne, Batwoman</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Batman: The Dark Knight Returns, Part 1</div>
+      <div class="role">as Lana Lang</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Charlotte's Web (1973)</div>
+      <div class="role">as Fern Arable</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Charlotte's Web 2: Wilbur's Great Adventure</div>
+      <div class="role">as Fern Arable</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Charming</div>
+      <div class="role">as Narrator</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Chicken Little</div>
+      <div class="role">as Tina</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/arratisja-e-pulave.html">Chicken Run</a></div>
+      <div class="role">as Mac</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Christmas Is Here Again</div>
+      <div class="role">as Sophiana</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Curious George: A Very Monkey Christmas</div>
+      <div class="role">as Andie</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Daisy: A Hen Into the Wild</div>
+      <div class="role">as Daisy</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/vajzat-superheroina-heroina-e-vitit.html">DC Super Hero Girls: Hero of the Year</a></div>
+      <div class="role">as Starfire, Amethyst</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Dennis the Menace: Cruise Control</div>
+      <div class="role">as Dennis <span>1st dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/dinosauri.html">Dinosaur</a></div>
+      <div class="role">as Plio</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Donkey Xote</div>
+      <div class="role">as Dulcinea</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">DuckTales: Treasure of the Lost Lamp</div>
+      <div class="role">as Dewey Duck</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/dumbo.html">Dumbo (1941)</a></div>
+      <div class="role">as Elephant Matriarch</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/beteja-e-mbreterise-se-fshehte.html">Epic</a></div>
+      <div class="role">as Mary Katherine "M.K."</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Faeries</div>
+      <div class="role">as Princess Brigid</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">FernGully: The Last Rainforest</div>
+      <div class="role">as Crysta</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">FernGully 2: The Magical Rescue</div>
+      <div class="role">as Crysta <span>1st dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/ne-kerkim-te-dorit.html">Finding Dory</a></div>
+      <div class="role">as Nemo</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/ne-kerkim-te-nemos.html">Finding Nemo</a></div>
+      <div class="role">as Nemo <span>2nd dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Gaturro: The Movie</div>
+      <div class="role">as Agatha</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Hammerboy</div>
+      <div class="role">as Princess Poplar</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/keshtjella-shtegtare.html">Howl's Moving Castle</a></div>
+      <div class="role">as Honey (1st voice)</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Hugo the Movie Star</div>
+      <div class="role">as Sensuella</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/fantastiket-2.html">Incredibles 2</a></div>
+      <div class="role">as Helen Parr / Elastigirl</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Kangaroo Jack: G'Day U.S.A.!</div>
+      <div class="role">as Newscaster</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Kiddo the Super-Truck</div>
+      <div class="role">as Hummy Hummer</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/kiki.html">Kiki's Delivery Service</a></div>
+      <div class="role">as Kiki</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/cmendurite-e-reja-te-kronkut.html">Kronk's New Groove</a></div>
+      <div class="role">as Tina</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/lili-dhe-endacaku-ii-qenushi-rebel.html">Lady and the Tramp II: Scamp's Adventure</a></div>
+      <div class="role">as Collette</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Lego DC Super Hero Girls: Super-Villain High</div>
+      <div class="role">as Supergirl</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Little Bee Julia &amp; Lady Life</div>
+      <div class="role">as Julia</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Little Polar Bear: Lars and the Little Tiger</div>
+      <div class="role">as Pieps</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Little Polar Bear: The Dream of Flying</div>
+      <div class="role">as Pieps</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Los Pintín al rescate</div>
+      <div class="role">as Luna</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Lupin the 3rd: Farewell to Nostradamus</div>
+      <div class="role">as Additional Voices</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/mendjendrituri.html">Megamind</a></div>
+      <div class="role">as Roxanne Ritchi</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Mickey, Donald, Goofy: The Three Musketeers</div>
+      <div class="role">as Minnie Mouse</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Mickey's House of Villains</div>
+      <div class="role">as Huey Duck</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Mickey's Once Upon a Christmas</div>
+      <div class="role">as Huey Duck</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Mickey's Twice Upon a Christmas</div>
+      <div class="role">as Huey Duck</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/mulan-2.html">Mulan II</a></div>
+      <div class="role">as Mulan, Sha-Ron</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/fqinji-im-totoro.html">My Neighbor Totoro</a></div>
+      <div class="role">as Mei Kusakabe</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/skena-ime-shkon-ne-hollywood.html">My Scene Goes Hollywood: The Movie</a></div>
+      <div class="role">as Barbie</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Next Gen</div>
+      <div class="role">as Molly</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Nine Dog Christmas</div>
+      <div class="role">as Little Girl</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/shpata-magjike-ekskalibur.html">Quest for Camelot</a></div>
+      <div class="role">as Kayley</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Rango</div>
+      <div class="role">as Beans</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Recess: School's Out</div>
+      <div class="role">as Ashley Spinelli</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/rio.html">Rio</a></div>
+      <div class="role">as Linda</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/robin-hood.html">Robin Hood</a></div>
+      <div class="role">as Maid Marian, Tagalong, Toby</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Rudolph the Red-Nosed Reindeer and the Island of Misfit Toys</div>
+      <div class="role">as Mrs. Claus</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Rugrats Go Wild</div>
+      <div class="role">as Angelica Pickles</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Rugrats in Paris: The Movie</div>
+      <div class="role">as Angelica Pickles</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/rrefenje-peshkaqenesh.html">Shark Tale</a></div>
+      <div class="role">as Shortie #3</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/shrek-2.html">Shrek 2</a></div>
+      <div class="role">as Princess Fiona</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/sinbad-legjenda-e-shtate-detrave.html">Sinbad: Legend of the Seven Seas</a></div>
+      <div class="role">as Marina <span>2nd dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">South Park: Bigger, Longer &amp; Uncut</div>
+      <div class="role">as Sharon Marsh</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Space Jam</div>
+      <div class="role">as Lola Bunny</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/ne-anen-tjeter-te-lumit.html">Spirited Away</a></div>
+      <div class="role">as Chihiro Ogino / Sen</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Tarzan (2013)</div>
+      <div class="role">as Jane Porter</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/tarzani-dhe-xhein.html">Tarzan &amp; Jane</a></div>
+      <div class="role">as Jane Porter</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/kafsha-shtepiake-e-mesueses.html">Teacher's Pet</a></div>
+      <div class="role">as Grandma Rose</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Big Trip</div>
+      <div class="role">as Mrs. Panda</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/kazani-i-zi.html">The Black Cauldron</a></div>
+      <div class="role">as Princess Eilonwy</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Care Bears Movie</div>
+      <div class="role">as Baby Hugs Bear</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Dog, the General, and the Birds</div>
+      <div class="role">as Additional Voices</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/dhelpra-dhe-qeni.html">The Fox and the Hound</a></div>
+      <div class="role">as Vixey</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/grinci.html">The Grinch</a></div>
+      <div class="role">as Donna Who</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/kurrizoja-i-notre-damit.html">The Hunchback of Notre Dame</a></div>
+      <div class="role">as Laverne, Quasimodo's Mother, Additional Voices</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/kurrizoja-i-notre-damit-ii.html">The Hunchback of Notre Dame II</a></div>
+      <div class="role">as Madellaine, Laverne</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/fantastiket.html">The Incredibles</a></div>
+      <div class="role">as Helen Parr / Elastigirl</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The King's Beard</div>
+      <div class="role">as Sophie</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Land Before Time II: The Great Valley Adventure</div>
+      <div class="role">as Cera</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Land Before Time III: The Time of the Great Giving</div>
+      <div class="role">as Cera</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Land Before Time V: The Mysterious Island</div>
+      <div class="role">as Cera</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Land Before Time VI: The Secret of Saurus Rock</div>
+      <div class="role">as Dinah</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Legend of the North Wind</div>
+      <div class="role">as Ane</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Lego Movie</div>
+      <div class="role">as Lucy / Wyldstyle</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Lego Movie 2: The Second Part</div>
+      <div class="role">as Lucy / Wyldstyle</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Lion, the Witch &amp; the Wardrobe (1979)</div>
+      <div class="role">as Lucy</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/sirena-e-vogel.html">The Little Mermaid</a></div>
+      <div class="role">as Princess Andrina <span>1st dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/aventurat-e-winnie-the-pooh.html">The Many Adventures of Winnie the Pooh</a></div>
+      <div class="role">as Christopher Robin</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/udhetari.html">The Pilgrim's Progress</a></div>
+      <div class="role">as The King's Herald</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/ekspresi-polar.html">The Polar Express</a></div>
+      <div class="role">as Additional Voices</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Prince of Egypt</div>
+      <div class="role">as Miriam <span>2nd dub</span></div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/princesha-dhe-bretku.html">The Princess and the Frog</a></div>
+      <div class="role">as Tiana</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="http://albaniandubs.weebly.com/zonja-brispi-dhe-sekretet-e-nimit.html">The Secret of NIMH</a></div>
+      <div class="role">as Teresa Brisby</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Secret of NIMH 2: Timmy to the Rescue</div>
+      <div class="role">as Jenny McBride</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Stolen Princess</div>
+      <div class="role">as Naina</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">The Trumpet of the Swan</div>
+      <div class="role">as Billie</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title"><a href="/peshperimat-e-zemres.html">Whisper of the Heart</a></div>
+      <div class="role">as Kinuyo</div>
+    </div>
+  </div>
+
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">Wonderful Days</div>
+      <div class="role">as Jay, Young Jay</div>
+    </div>
+  </div>
+</div>
+
+<div id="md-display-liveaction" class="credits-wrapper md-grid">
+  <div class="credit-item">
+    <div class="media-icon-container"><i class="fa-solid fa-microphone-lines"></i></div>
+    <div class="info">
+      <div class="title">A Little Princess <span>1996</span></div>
+      <div class="role">as Sara Crewe</div>
+    </div>
+  </div>
+</div>
